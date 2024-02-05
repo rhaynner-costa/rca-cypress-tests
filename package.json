@@ -1,0 +1,27 @@
+{
+  "name": "rca-cypress-tests",
+  "version": "1.0.0",
+  "description": "Portifolio de testes e2e com o cypress ",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhaynner-costa/rca-cypress-tests.git"
+  },
+  "keywords": [
+    "Cypress",
+    "e2e",
+    "web"
+  ],
+  "author": "Rhaynner Costa Assuncao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhaynner-costa/rca-cypress-tests/issues"
+  },
+  "homepage": "https://github.com/rhaynner-costa/rca-cypress-tests#readme",
+  "dependencies": {
+    "cypress": "^13.6.4"
+  }
+}
