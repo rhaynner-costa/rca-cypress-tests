@@ -4,7 +4,8 @@
   "description": "Portifolio de testes e2e com o cypress ",
   "main": "index.js",
   "scripts": {
-    "cy:open": "npx cypress open"
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run --browser chrome"
   },
   "repository": {
     "type": "git",
