@@ -1,148 +1,75 @@
 /// <reference types="Cypress" /> 
 
+import login from "../PageObjects/LoginPage.js";
+
 describe('Login tests', () => {
   beforeEach(() => {
     cy.visit('https://opensource-demo.orangehrmlive.com/')
+    cy.title().should('eq', 'OrangeHRM')
 
   })
 
   it('Send an invalid username', () => {
-    //digitar user invalido
-    cy.get('input[name="username"]')
-      .should('be.visible')
-      .type('UserErrado')
-      .should('have.value', 'UserErrado')
-    //digitar senha valida
-    cy.get('input[name="password"]')
-      .should('be.visible')
-      .type('admin123')
-      .should('have.value', 'admin123')
-    //clicar em login 
-    cy.get('button[type="submit"]')
-      .should('be.visible')
-      .click()
-    //validar mensagem de erro 
-    cy.get('p')
-      .contains('Invalid credentials')
-      .should('be.visible')
-    //valida se estou na pagina de login
-    cy.title().should('eq', 'OrangeHRM')
+    login.setUserName('UserErrado')
+    login.setPassword('admin123')
+    login.clickLoginButton()
+    login.credencialAlert(true)
 
   })
 
   it('Send an invalid password', () => {
-    //digitar em usuario valido
-    cy.get('input[name="username"]')
-      .should('be.visible')
-      .type('Admin')
-      .should('have.value', 'Admin')
-    //digitar senha invalida
-    cy.get('input[name="password"]')
-      .should('be.visible')
-      .type('senhaErrada')
-      .should('have.value', 'senhaErrada')
-    //clicar em login 
-    cy.get('button[type="submit"]')
-      .should('be.visible')
-      .click()
-    //validar mensagem de erro 
-    cy.get('p')
-      .contains('Invalid credentials')
-      .should('be.visible')
-    cy.title().should('eq', 'OrangeHRM')
+    login.setUserName('Admin')
+    login.setPassword('senhaErrada')
+    login.clickLoginButton()
+    login.credencialAlert(true)
 
   })
 
   it('Send user and password empty', () => {
-    //não digitar em usuario 
-    //nao digitar senha 
-    //clicar em login 
-    cy.get('button[type="submit"]')
-      .should('be.visible')
-      .click()
-    //validar mensagem de erro 
-    cy.get('span')
-      .contains('Required')
-      .should('be.visible')
-    cy.title().should('eq', 'OrangeHRM')
+    login.clickLoginButton()
+    login.dataRequiredAlert(true)
 
   })
 
   it('Send only a valid user name', () => {
-    //digitar em usuario valido
-    cy.get('input[name="username"]')
-      .should('be.visible')
-      .type('Admin')
-      .should('have.value', 'Admin')
-    //nao digitar senha 
-    //clicar em login 
-    cy.get('button[type="submit"]')
-      .should('be.visible')
-      .click()
-    //validar mensagem de erro 
-    cy.get('span')
-      .contains('Required')
-      .should('be.visible')
+    login.setUserName('Admin')
+    login.clickLoginButton()
+    login.dataRequiredAlert(true)
 
   })
 
   it('Send only a valid password', () => {
-    //digitar senha valida
-    cy.get('input[name="password"]')
-      .should('be.visible')
-      .type('admin123')
-      .should('have.value', 'admin123')
-    //clicar em login 
-    cy.get('button[type="submit"]')
-      .should('be.visible')
-      .click()
-    //validar mensagem de erro 
-    cy.get('span')
-      .contains('Required')
-      .should('be.visible')
+    login.setPassword('admin123')
+    login.clickLoginButton()
+    login.dataRequiredAlert(true)
 
   })
 
   it('Send a valid username and password', () => {
-    // digitar em usuario valido
-    cy.get('input[name="username"]')
-      .should('be.visible')
-      .type('Admin')
-      .should('have.value', 'Admin')
-    // digitar senha valida
-    cy.get('input[name="password"]')
-      .should('be.visible')
-      .type('admin123')
-      .should('have.value', 'admin123')
-    //clicar em login 
-    cy.get('button[type="submit"]')
-      .should('be.visible')
-      .click()
-    //validar se navegou para a pagina correta
-    cy.get('h6')
-      .contains('Dashboard')
-      .should('be.visible')
+    login.setUserName('Admin')
+    login.setPassword('admin123')
+    login.clickLoginButton()
+    login.verifyLogin()
+
   })
 
-  it('Test fail', () => {
-    // digitar em usuario valido
-    cy.get('input[name="username"]')
-      .should('be.visible')
-      .type('Admin')
-      .should('have.value', 'Admin')
-    // digitar senha valida
-    cy.get('input[name="password"]')
-      .should('be.visible')
-      .type('admin123')
-      .should('have.value', 'admin123')
-    //clicar em login 
-    cy.get('button[type="submit"]')
-      .should('be.visible')
-      .click()
-    //validar se navegou para a pagina correta
-    cy.get('h6')
-      .contains('Dashboard')
-      .should('no.be.visible')
+  it('Sending valid username and password when hidden', () => {
+    cy.fixture('orangeHrm').then((data) => {
+      login.setUserName(data.userName)
+      login.setPassword(data.password)
+      login.clickLoginButton()
+      login.verifyLogin()
+
+    })
+
+  })
+
+  it('Fail test', () => {
+    login.setUserName('Admin')
+    login.setPassword('admin123')
+    // login.clickLoginButton()
+    login.verifyLogin()
+
   })
 
 })
