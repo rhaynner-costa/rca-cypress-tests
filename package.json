@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "npx cypress open",
-    "cy:run": "npx cypress run --browser chrome"
+    "cy:run": "npx cypress run --browser chrome",
+    "test:chrome": "npx cypress run --browser chrome --headed"
   },
   "repository": {
     "type": "git",

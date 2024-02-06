@@ -1,13 +1,26 @@
 # rca-cypress-tests
 Portfólio de testes e2e com o Cypress 
 
+# Requisitos
+Node.js instalado
+
 # Dependencias
 Na raiz do projeto rodar o comando: 
 
- npm install 
+    npm install 
 
 # Executar os testes
 
 Na raiz do projeto rodar o comando: 
 
-npm run cy:open 
+    npm run cy:open  - inicia o cypress
+
+    npm run cy:run - Roda os testes no headless no chrome 
+
+    npm run test:chrome - roda os testes mostrando o navegador
+
+# Evidencias 
+
+Em caso de falha em algum cenário, um vídeo registrando a execução dos testes é salvo no diretório 'cypress/videos'
+
+Em caso de falha em algum cenário, um vídeo que registra a execução dos testes, juntamente com capturas de tela, é salvo no diretório cypress/screenshots
