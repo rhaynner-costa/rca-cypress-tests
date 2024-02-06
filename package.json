@@ -25,5 +25,8 @@
   "homepage": "https://github.com/rhaynner-costa/rca-cypress-tests#readme",
   "dependencies": {
     "cypress": "^13.6.4"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.1"
   }
 }

@@ -5,6 +5,8 @@ node_modules/
 downloads/
 screenshots/
 videos/
+reports/
+test-report/
 
 #Files
 .DS_Store
