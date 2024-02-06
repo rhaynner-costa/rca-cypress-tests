@@ -3,3 +3,8 @@
 # Diretórios
 node_modules/
 downloads/
+screenshots/
+videos/
+
+#Files
+.DS_Store
