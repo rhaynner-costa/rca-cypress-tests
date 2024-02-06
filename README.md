@@ -15,14 +15,15 @@ Na raiz do projeto rodar o comando:
 
 - inicia o cypress
 
-    npm run cy:open  
+        npm run cy:open  
 
 - Roda os testes no headless no chrome
 
-    npm run cy:run  
+        npm run cy:run  
+
 - roda os testes mostrando o navegador
 
-    npm run test:chrome 
+        npm run test:chrome 
 
 # Evidencias 
 
