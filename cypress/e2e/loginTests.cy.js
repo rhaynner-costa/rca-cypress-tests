@@ -9,7 +9,7 @@ describe('Login tests', () => {
 
   })
 
-  it('Send an invalid username', () => {
+  it('Send a invalid username', () => {
     login.setUserName('UserErrado')
     login.setPassword('admin123')
     login.clickLoginButton()
@@ -17,7 +17,7 @@ describe('Login tests', () => {
 
   })
 
-  it('Send an invalid password', () => {
+  it('Send a invalid password', () => {
     login.setUserName('Admin')
     login.setPassword('senhaErrada')
     login.clickLoginButton()
